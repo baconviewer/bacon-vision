@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import CytoscapeComponent from 'react-cytoscapejs';
 import 'react-bulma-components/dist/react-bulma-components.min.css';
-import { Button } from 'react-bulma-components';
+import { Button, Box } from 'react-bulma-components';
 
 import "./dag.css";
 
@@ -63,7 +63,6 @@ export default class Dag extends Component {
 		return (
 			
 			<div className="dag-view-container">
-				<Button color="primary" onClick={this.panThatShit}>My Bulma button</Button>
 				<CytoscapeComponent
 					ref={this.cytoscapeComponent}
 					autolock
@@ -71,6 +70,31 @@ export default class Dag extends Component {
 					style={styles.blockView}
 					fit="true"
 				/>
+				<div className="columns">
+					<div className="column">
+						<Box className="stat-box">
+							<div className="stat-box-text">
+								YAY!
+							</div>
+						</Box>
+					</div>
+					<div className="column">
+						<Box className="stat-box">
+							<div className="stat-box-text">
+								YAY!
+							</div>
+						</Box>
+					</div>
+					<div className="column">
+						<Box className="stat-box">
+							<div className="stat-box-text">
+								YAY!
+							</div>
+						</Box>
+					</div>
+				</div>
+				
+				<Button color="primary" onClick={this.panThatShit}>My Bulma button</Button>
 			</div>
 		)
 	}
@@ -78,7 +102,7 @@ export default class Dag extends Component {
 
 const styles = {
 	blockView: {
-		width: '900px',
+		width: '100vw',
 		height: '500px',
 		shape: 'square',
 	}
