@@ -1,12 +1,21 @@
 import React, { Component } from 'react';
 import './App.css';
 import Dag from "./component/dag";
+import data from "./data";
 
 class App extends Component {
+	state = {blocks: []};
+
+	componentDidMount = () => {
+		data.forEach((item, i) => {
+			setTimeout(() => this.setState({ blocks: [...this.state.blocks, item]}), 6000 * (i+1));
+		})
+	};
+
 	render(){
 		return (
 			<div className="App">
-				<Dag/>
+				<Dag blocks={this.state.blocks}/>
 			</div>
     )
 	}

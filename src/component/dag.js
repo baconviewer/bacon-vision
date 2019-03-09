@@ -1,6 +1,5 @@
 import React, { Component } from 'react';
 import CytoscapeComponent from 'react-cytoscapejs';
-import data from "../data";
 
 import "./dag.css";
 
@@ -17,7 +16,13 @@ export default class Dag extends Component {
 				},
 				position: {
 					x: index * 100,
-					y: 0
+					y: 250
+				},
+				style: {
+					width: 20,
+					height: 20,
+					shape: 'rectangle',
+					backgroundColor: "red"
 				}
 			});
 			// Add lines between nodes
@@ -25,19 +30,28 @@ export default class Dag extends Component {
 				data: {
 					source: block.headParentRoot,
 					target: block.blockHeadRoot
+				},
+				style: {
+					width: 2,
 				}
 			});
 		});
-		return elements;
+		// Remove first edge to prevent looped slot
+		elements.edges.shift();
+		// const x = elements.nodes[elements.nodes.length - 1].position.x;
+		// const y = elements.nodes[elements.nodes.length - 1].position.y;
+		return {elements};
 	};
 
 	render() {
-		const elements = this.generateDagData(data);
+		const {elements} = this.generateDagData(this.props.blocks);
 		return (
 			<div className="dag-view-container">
 				<CytoscapeComponent
+					autolock
 					elements={CytoscapeComponent.normalizeElements(elements)}
 					style={styles.blockView}
+					// pan={{x, y}}
 				/>
 			</div>
 		)
@@ -49,6 +63,5 @@ const styles = {
 		width: '5000px',
 		height: '500px',
 		shape: 'square',
-		backgroundColor: 'blue'
 	}
 };
