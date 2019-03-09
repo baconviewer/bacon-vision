@@ -1,47 +1,40 @@
 import React, { Component } from 'react';
 import CytoscapeComponent from 'react-cytoscapejs';
 import './App.css';
+import data from "./data";
 
 class App extends Component {
 
   genTree = (blocks) => {
-    let elements = { nodes: [], edges: []};
+    let elements = {
+    	nodes: [{data: {id: "0x0000000000000000000000000000000000000000000000000000000000000000", label: "0"}}],
+	    edges: []};
     blocks.forEach((block, index) => {
-      // Add blocks
-      elements.nodes.push({
-	      data: {
-		      id: block[2],
-		      label: block[1]
-	      },
-	      position: {
-		      x: index * 100,
-		      y: 0
-	      }
-      });
-      // Add lines between nodes
-      elements.edges.push({
-        data: {
-          source: block[2],
-          target: block[3]
-        }
-      })
-    })
+	    // Add blocks
+	    elements.nodes.push({
+		    data: {
+			    id: block.blockHeadRoot,
+			    label: block.blockHeadRoot
+		    },
+		    position: {
+			    x: index * 100,
+			    y: 0
+		    }
+	    });
+	    // Add lines between nodes
+	    elements.edges.push({
+		    data: {
+			    source: block.headParentRoot,
+			    target: block.blockHeadRoot
+		    }
+	    });
+    });
+	  return elements;
   };
 
 	render(){
-	  // const elements = this.genTree();
-		// Temp values
-	  const elements = {
-		  nodes: [
-			  { data: { id: 'slot1', label: 'slot1' }, position: { x: 30, y: 100 } },
-			  { data: { id: 'slot2', label: 'slot2' }, position: { x: 130, y: 100 } }
-		  ],
-		  edges: [
-			  {
-				  data: { source: 'slot1', target: 'slot2' }
-			  }
-		  ]
-	  };
+	  const elements = this.genTree(data);
+	  // const elements = temp;
 		return (
 		  <div className="App">
         <div className="block-view-container">
@@ -54,8 +47,8 @@ class App extends Component {
 
 const styles = {
   blockView: {
-    width: '600px',
-    height: '300px',
+    width: '5000px',
+    height: '500px',
     shape: 'square',
     backgroundColor: 'blue'
   }
