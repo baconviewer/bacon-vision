@@ -33,6 +33,7 @@ export default class Dag extends Component {
 				},
 				style: {
 					width: 2,
+					fill: 'red'
 				}
 			});
 		});
@@ -51,7 +52,7 @@ export default class Dag extends Component {
 					autolock
 					elements={CytoscapeComponent.normalizeElements(elements)}
 					style={styles.blockView}
-					// pan={{x, y}}
+					fit="true"
 				/>
 			</div>
 		)
@@ -63,5 +64,6 @@ const styles = {
 		width: '5000px',
 		height: '500px',
 		shape: 'square',
+		// fit: true
 	}
 };
