@@ -23,7 +23,9 @@ export default class Dag extends Component {
 					height: 20,
 					shape: 'rectangle',
 					backgroundColor: "red"
-				}
+				},
+				selectable: false,
+				grabbable: false
 			});
 			// Add lines between nodes
 			elements.edges.push({
