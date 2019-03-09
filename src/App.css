@@ -1,11 +1,4 @@
 .App {
   text-align: center;
-  background-color: red;
   height: 100%;
-}
-
-.block-view-container {
-  /*display: flex;*/
-  /*justify-content: center;*/
-  /*align-items: center;*/
 }
