@@ -5,6 +5,7 @@
   "dependencies": {
     "bulma": "^0.7.4",
     "react": "^16.8.4",
+    "react-bulma-components": "^2.3.0",
     "react-cytoscapejs": "^1.1.0",
     "react-dom": "^16.8.4",
     "react-scripts": "2.1.8"

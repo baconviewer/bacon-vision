@@ -1,10 +1,17 @@
 import React, { Component } from 'react';
 import CytoscapeComponent from 'react-cytoscapejs';
+import 'react-bulma-components/dist/react-bulma-components.min.css';
+import { Button } from 'react-bulma-components';
 
 import "./dag.css";
 
 export default class Dag extends Component {
-
+	constructor(props) {
+		super(props);
+		// create a ref to store the textInput DOM element
+		this.cytoscapeComponent = React.createRef();
+		this.panThatShit = this.panThatShit.bind(this);
+	}
 	generateDagData = (blocks) => {
 		let elements = {nodes: [], edges: []};
 		blocks.forEach((block, index) => {
@@ -34,8 +41,8 @@ export default class Dag extends Component {
 					target: block.blockHeadRoot
 				},
 				style: {
-					width: 2,
-					fill: 'red'
+					width: 6,
+					lineColor: 'red',
 				}
 			});
 		});
@@ -46,11 +53,19 @@ export default class Dag extends Component {
 		return {elements};
 	};
 
+	panThatShit(){
+		alert(this.cytoscapeComponent);
+		this.cytoscapeComponent.panBy(pan);
+	}
+
 	render() {
 		const {elements} = this.generateDagData(this.props.blocks);
 		return (
+			
 			<div className="dag-view-container">
+				<Button color="primary" onClick={this.panThatShit}>My Bulma button</Button>
 				<CytoscapeComponent
+					ref={this.cytoscapeComponent}
 					autolock
 					elements={CytoscapeComponent.normalizeElements(elements)}
 					style={styles.blockView}
@@ -63,9 +78,12 @@ export default class Dag extends Component {
 
 const styles = {
 	blockView: {
-		width: '5000px',
+		width: '900px',
 		height: '500px',
 		shape: 'square',
-		// fit: true
 	}
+};
+const pan = {
+  x: 100,
+  y: 0
 };
