@@ -10,6 +10,12 @@
     height: 225px;
 }
 
-.stat-box-text{
-    
+.stat-box-data{
+    font-size: 72pt;
+    text-align: center;
+}
+
+.stat-box-label{
+    text-align: center;
+    font-size: 36pt;
 }

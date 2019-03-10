@@ -8,28 +8,33 @@ import "./dag.css";
 export default class Dag extends Component {
 	constructor(props) {
 		super(props);
-		this.state = {blocks: this.props.blocks};
+		this.state = {blocks: this.props.blocks, locX: 0};
 	  }
 	generateDagData = (blocks) => {
-		//blocks = blocks.slice(blocks.length - 5, blocks.length);
-		//alert(blocks.length);
 		let elements = {nodes: [], edges: []};
+		//blocks = (blocks) => blocks.filter((v,i) => blocks.indexOf(v).slot === i.slot);
+
+		blocks = blocks;
+		
 		blocks.forEach((block, index) => {
 			// Add blocks
 			elements.nodes.push({
 				data: {
-					id: block.blockHeadRoot,
-					label: block.slot
+					id: block.headBlockRoot,
+					label: block.headBlockRoot.slice(0, 8) + "..."
 				},
 				position: {
-					x: index * 100,
+					x: index * 200,
 					y: 100
 				},
 				style: {
-					width: 20,
-					height: 20,
-					shape: 'rectangle',
-					backgroundColor: "red"
+					width: 30,
+					height: 30,
+					shape: 'roundrect',
+					backgroundColor: "#2586c6",
+					color: "white",
+					textMarginY: "-30px",
+					fontSize: "24pt"
 				},
 				selectable: false,
 				grabbable: false
@@ -37,12 +42,12 @@ export default class Dag extends Component {
 			// Add lines between nodes
 			elements.edges.push({
 				data: {
-					source: block.headParentRoot,
-					target: block.blockHeadRoot
+					source: block.parentHeadBlockRoot,
+					target: block.headBlockRoot
 				},
 				style: {
-					width: 6,
-					lineColor: 'red',
+					width: 2,
+					lineColor: 'white',
 				}
 			});
 		});
@@ -55,9 +60,10 @@ export default class Dag extends Component {
 		return {elements};
 	};
 	componentWillUpdate(){
-		//this.cy.pan = { x: 5, y: 0 };
-		//alert(this.cy);
-		//alert((this.props.blocks.length-1));
+		if((this.props.blocks || []).length > 5){
+			//offset = (this.props.blocks.length - 5) * -100;
+			this.cy.panBy({x: -200});
+		}
 	}
 	render() {
 		const {elements} = this.generateDagData(this.props.blocks);
@@ -70,7 +76,6 @@ export default class Dag extends Component {
 					elements={CytoscapeComponent.normalizeElements(elements)}
 					style={styles.blockView}
 					fit={true}
-					panningEnabled={false}
 					boxSelectionEnabled={false}
 				/>
 			</div>
