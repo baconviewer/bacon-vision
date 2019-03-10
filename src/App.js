@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import './App.css';
 import Dag from "./component/dag";
 import data from "./data";
+import StatView from "./component/StatView";
  
 class App extends Component {
 	state = {blocks: []};
@@ -16,6 +17,7 @@ class App extends Component {
 		return (
 			<div className="App">
 				<Dag blocks={this.state.blocks}/>
+				<StatView></StatView>
 			</div>
     )
 	}

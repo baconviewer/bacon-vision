@@ -1,6 +1,11 @@
 .dag-view-container {
+    
 }
 
+.stat-view{
+    padding-left: 15%;
+    padding-right: 15%;
+}
 .stat-box{
     height: 225px;
 }

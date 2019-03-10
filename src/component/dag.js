@@ -23,7 +23,7 @@ export default class Dag extends Component {
 				},
 				position: {
 					x: index * 100,
-					y: 250
+					y: 100
 				},
 				style: {
 					width: 20,
@@ -65,36 +65,13 @@ export default class Dag extends Component {
 			<div className="dag-view-container">
 				<CytoscapeComponent
 					ref={this.cytoscapeComponent}
-					autolock
+					autolock={true}
 					elements={CytoscapeComponent.normalizeElements(elements)}
 					style={styles.blockView}
 					fit="true"
+					panningEnabled={false}
+					
 				/>
-				<div className="columns">
-					<div className="column">
-						<Box className="stat-box">
-							<div className="stat-box-text">
-								YAY!
-							</div>
-						</Box>
-					</div>
-					<div className="column">
-						<Box className="stat-box">
-							<div className="stat-box-text">
-								YAY!
-							</div>
-						</Box>
-					</div>
-					<div className="column">
-						<Box className="stat-box">
-							<div className="stat-box-text">
-								YAY!
-							</div>
-						</Box>
-					</div>
-				</div>
-				
-				<Button color="primary" onClick={this.panThatShit}>My Bulma button</Button>
 			</div>
 		)
 	}
@@ -103,7 +80,7 @@ export default class Dag extends Component {
 const styles = {
 	blockView: {
 		width: '100vw',
-		height: '500px',
+		height: '300px',
 		shape: 'square',
 	}
 };
