@@ -10,7 +10,7 @@ export default class StatBox extends Component {
 		return (
             <div className="column">
                 <Box className="stat-box">
-                    <div className="stat-box-data has-text-weight-light	">
+                    <div className="stat-box-data has-text-weight-light">
                         YAY!
                     </div>
                     <div className="stat-box-label">

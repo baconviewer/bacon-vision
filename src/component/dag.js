@@ -31,7 +31,7 @@ export default class Dag extends Component {
 					width: 30,
 					height: 30,
 					shape: 'roundrect',
-					backgroundColor: "#2586c6",
+					backgroundColor: "#08357c",
 					color: "white",
 					textMarginY: "-30px",
 					fontSize: "24pt"
@@ -59,6 +59,9 @@ export default class Dag extends Component {
 		// const y = elements.nodes[elements.nodes.length - 1].position.y;
 		return {elements};
 	};
+	componentDidMount(){
+		this.cy.panBy({x: 600});
+	}
 	componentWillUpdate(){
 		if((this.props.blocks || []).length > 5){
 			//offset = (this.props.blocks.length - 5) * -100;

@@ -18,8 +18,7 @@ class App extends Component {
 		return (
 			<div className="App">
 				<Dag blocks={this.state.blocks}/>
-				<StatView></StatView>
-				<StatView></StatView>
+				<StatView blocks={this.state.blocks}></StatView>
 			</div>
     )
 	}
