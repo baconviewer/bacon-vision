@@ -16,7 +16,7 @@ export default class StatView extends Component {
                     <div className="column">
                         <Box className="stat-box">
                             <div className="stat-box-data has-text-weight-light">
-                            {(this.props.blocks || []).length}
+                                {(this.props.blocks || []).length}
                             </div>
                             <div className="stat-box-label">
                                 Block Height

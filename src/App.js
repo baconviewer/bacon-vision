@@ -9,10 +9,18 @@ class App extends Component {
 	state = {blocks: []};
 
 	componentDidMount = () => {
-		data.forEach((item, i) => {
-			setTimeout(() => this.setState({ blocks: [...this.state.blocks, item]}), 6000 * (i+1));
-		})
-	};
+		this.timer = setInterval(()=> this.incrementBlock(), 1000);
+		this.counter = 0;
+	}
+
+	componentWillUnmount() {
+		clearInterval(this.timer)
+		this.timer = null;
+	}
+
+	incrementBlock() {
+		this.setState({ blocks: [...this.state.blocks, data[this.counter]], counter: this.counter++})
+	}
 
 	render(){
 		return (
@@ -20,7 +28,7 @@ class App extends Component {
 				<Dag blocks={this.state.blocks}/>
 				<StatView blocks={this.state.blocks}></StatView>
 			</div>
-    )
+    	)
 	}
 }
 
