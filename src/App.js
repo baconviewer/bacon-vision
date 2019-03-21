@@ -4,13 +4,13 @@ import Dag from "./component/dag";
 //import data from "./data";
 import data from "./artemis";
 import StatView from "./component/StatView";
+import axios from 'axios';
  
 class App extends Component {
-	state = {blocks: []};
+	state = {blocks: [], bestBlock: 0};
 
 	componentDidMount = () => {
-		this.timer = setInterval(()=> this.incrementBlock(), 1000);
-		this.counter = 0;
+		this.timer = setInterval(()=> this.getLatestBlocks(), 6000);
 	}
 
 	componentWillUnmount() {
@@ -18,8 +18,18 @@ class App extends Component {
 		this.timer = null;
 	}
 
-	incrementBlock() {
-		this.setState({ blocks: [...this.state.blocks, data[this.counter]], counter: this.counter++})
+	getLatestBlocks() {
+		axios
+		  .get(`/api/latest-blocks?lastblock=${this.state.bestBlock}`)
+		  .then(response => {
+			let blocks = response.data
+			let localMax = this.state.bestBlock
+			blocks.forEach(block => {
+				if(block.index > localMax) localMax = block.index;
+			});
+			console.log(this.state.bestBlock + ' ' + localMax)
+			if(localMax > this.state.bestBlock) this.setState({bestBlock: localMax})
+		  })
 	}
 
 	render(){
