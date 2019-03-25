@@ -13,7 +13,7 @@ export default class Dag extends Component {
 	generateDagData = (blocks) => {
 		let elements = {nodes: [], edges: []};
 		//blocks = (blocks) => blocks.filter((v,i) => blocks.indexOf(v).slot === i.slot);
-
+		console.log(blocks)
 		blocks = blocks;
 		
 		blocks.forEach((block, index) => {

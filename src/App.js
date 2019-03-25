@@ -1,8 +1,6 @@
 import React, { Component } from 'react';
 import './App.css';
 import Dag from "./component/dag";
-//import data from "./data";
-import data from "./artemis";
 import StatView from "./component/StatView";
 import axios from 'axios';
  
@@ -28,7 +26,8 @@ class App extends Component {
 				if(block.index > localMax) localMax = block.index;
 			});
 			console.log(this.state.bestBlock + ' ' + localMax)
-			if(localMax > this.state.bestBlock) this.setState({bestBlock: localMax})
+
+			if(localMax > this.state.bestBlock) this.setState({bestBlock: localMax, blocks: this.state.blocks.concat(blocks)})
 		  })
 	}
 
