@@ -1,5 +1,5 @@
-# BaconVision - an Eth 2.0 Beacon Chain visulaizer
-Eth2.0 data visualizer, built to be implementation agnostic.
+# BaconVision
+## A Client Agnostic ETH2.0 Beacon Chain Visualizer
 
 1. `git clone https://github.com/baconviewer/bacon-vision.git`
 2. `cd bacon-vision`
