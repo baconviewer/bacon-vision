@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import 'react-bulma-components/dist/react-bulma-components.min.css';
 import { Button, Box } from 'react-bulma-components';
 
-import "./dag.css";
+import "./Dag.css";
 
 export default class StatView extends Component {
     constructor(props) {
