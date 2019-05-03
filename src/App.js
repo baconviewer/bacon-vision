@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import './App.css';
-import Dag from "./component/dag";
+import Dag from "./component/Dag";
 import StatView from "./component/StatView";
 import axios from 'axios';
  
