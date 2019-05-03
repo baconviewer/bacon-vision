@@ -1,12 +1,11 @@
 const
   express = require('express'),
   app     = express(),
-  fs      = require('fs'),
   program = require('commander'),
   blocks  = require('./blocks'),
-  package = require('../package.json')
+  pkg     = require('../package.json')
 
-let db = undefined
+let db
 
 app.get('/api/hello', function (req, res) {
   res.send('Hello World')
@@ -21,12 +20,11 @@ app.get('/api/latest-blocks', function (req, res) {
   }
   let contents = db.blocksSince(lastBlock)
   res.json(contents)
-  return
 })
 
 // main
 program
-  .version(package.version)
+  .version(pkg.version)
   .option('-s, --simulation', 'Simulate a slow stream on /api/latest-blocks')
   .option('-p, --path [string]', 'Path to JSON log file')
   .parse(process.argv)
