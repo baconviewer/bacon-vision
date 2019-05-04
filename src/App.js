@@ -7,7 +7,7 @@ import axios from 'axios';
 class App extends Component {
 	state = {blocks: [], bestBlock: 0};
 
-	componentDidMount = () => {
+	componentDidMount() {
 		this.timer = setInterval(()=> this.getLatestBlocks(), 6000);
 	}
 
@@ -18,17 +18,16 @@ class App extends Component {
 
 	getLatestBlocks() {
 		axios
-		  .get(`/api/latest-blocks?lastblock=${this.state.bestBlock}`)
-		  .then(response => {
-			let blocks = response.data
-			let localMax = this.state.bestBlock
-			blocks.forEach(block => {
-				if(block.index > localMax) localMax = block.index;
-			});
-			console.log(this.state.bestBlock + ' ' + localMax)
-
-			if(localMax > this.state.bestBlock) this.setState({bestBlock: localMax, blocks: this.state.blocks.concat(blocks)})
-		  })
+			.get(`/api/latest-blocks?lastblock=${this.state.bestBlock}`)
+			.then(response => {
+				let blocks = response.data
+				let localMax = this.state.bestBlock
+				blocks.forEach(block => {
+					if(block.index > localMax) localMax = block.index;
+				});
+				console.log(this.state.bestBlock + ' ' + localMax)
+				if(localMax > this.state.bestBlock) this.setState({bestBlock: localMax, blocks: this.state.blocks.concat(blocks)})
+			})
 	}
 
 	render(){
@@ -37,7 +36,7 @@ class App extends Component {
 				<Dag blocks={this.state.blocks}/>
 				<StatView blocks={this.state.blocks}></StatView>
 			</div>
-    	)
+			)
 	}
 }
 
