@@ -14,7 +14,6 @@
     "react-bulma-components": "^2.3.0",
     "react-cytoscapejs": "^1.1.0",
     "react-dom": "^16.8.4",
-    "react-scripts": "2.1.8",
     "tail": "^2.0.2"
   },
   "scripts": {
@@ -38,6 +37,7 @@
   "devDependencies": {
     "@babel/cli": "^7.4.4",
     "@babel/core": "^7.4.4",
-    "@babel/preset-react": "^7.0.0"
+    "@babel/preset-react": "^7.0.0",
+    "react-scripts": "2.1.8"
   }
 }
