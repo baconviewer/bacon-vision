@@ -5,7 +5,7 @@
 2. `cd bacon-vision`
 3. `npm install`
 
-## To connect BaconVision to the Artemis client
+## To Connect BaconVision to the Artemis Client
 
 4. `git clone https://github.com/PegaSysEng/artemis.git`
 5. `cd artemis`
@@ -17,3 +17,18 @@
 `"start": "node server/server.js -p '[PATH_TO_ARTEMIS_JSON]' & react-scripts start"`
 10. cd to the `bacon-vision` directory
 11. `npm start`
+
+## Using the React Components in Another App
+
+First, add bacon-vision to your React project.
+
+```sh
+npm install --save baconviewer/bacon-vision
+```
+
+Then, in your React code:
+
+```js
+import {Dag, StatView} from 'bacon-vision'
+```
+
