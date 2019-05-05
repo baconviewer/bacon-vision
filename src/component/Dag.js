@@ -1,21 +1,16 @@
 import React, { Component } from 'react';
 import CytoscapeComponent from 'react-cytoscapejs';
-import 'react-bulma-components/dist/react-bulma-components.min.css';
-import { Button, Box } from 'react-bulma-components';
 
-import "./dag.css";
+import "./Dag.css";
 
 export default class Dag extends Component {
 	constructor(props) {
 		super(props);
-		this.state = {blocks: this.props.blocks, locX: 0};
-	  }
-	generateDagData = (blocks) => {
+		this.state = { blocks: this.props.blocks, locX: 0 };
+	}
+	generateDagData(blocks) {
 		let elements = {nodes: [], edges: []};
-		//blocks = (blocks) => blocks.filter((v,i) => blocks.indexOf(v).slot === i.slot);
-		console.log(blocks)
-		blocks = blocks;
-		
+
 		blocks.forEach((block, index) => {
 			// Add blocks
 			elements.nodes.push({
@@ -58,7 +53,7 @@ export default class Dag extends Component {
 		// const x = elements.nodes[elements.nodes.length - 1].position.x;
 		// const y = elements.nodes[elements.nodes.length - 1].position.y;
 		return {elements};
-	};
+	}
 	componentDidMount(){
 		this.cy.panBy({x: 600});
 	}
@@ -71,7 +66,6 @@ export default class Dag extends Component {
 	render() {
 		const {elements} = this.generateDagData(this.props.blocks);
 		return (
-			
 			<div className="dag-view-container">
 				<CytoscapeComponent
 					cy={cy => this.cy = cy}
@@ -94,6 +88,6 @@ const styles = {
 	}
 };
 const pan = {
-  x: 100,
-  y: 0
+	x: 100,
+	y: 0
 };

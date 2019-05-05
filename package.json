@@ -1,7 +1,6 @@
 {
-  "name": "explorer",
+  "name": "bacon-vision",
   "version": "0.1.0",
-  "private": true,
   "dependencies": {
     "axios": "^0.18.0",
     "body-parser": "^1.18.3",
@@ -15,22 +14,30 @@
     "react-bulma-components": "^2.3.0",
     "react-cytoscapejs": "^1.1.0",
     "react-dom": "^16.8.4",
-    "react-scripts": "2.1.8",
     "tail": "^2.0.2"
   },
   "scripts": {
     "start": "node server/server.js -p '../bacon.json' & react-scripts start",
     "build": "react-scripts build",
     "test": "react-scripts test",
-    "eject": "react-scripts eject"
+    "eject": "react-scripts eject",
+    "build-lib": "rm -rf lib && NODE_ENV=production babel src/component --out-dir lib --copy-files --ignore __tests__,spec.js,test.js,__snapshots__",
+    "prepare": "npm run build-lib"
   },
   "eslintConfig": {
     "extends": "react-app"
   },
+  "main": "lib/index.js",
   "browserslist": [
     ">0.2%",
     "not dead",
     "not ie <= 11",
     "not op_mini all"
-  ]
+  ],
+  "devDependencies": {
+    "@babel/cli": "^7.4.4",
+    "@babel/core": "^7.4.4",
+    "@babel/preset-react": "^7.0.0",
+    "react-scripts": "2.1.8"
+  }
 }
